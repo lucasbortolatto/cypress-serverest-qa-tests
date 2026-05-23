@@ -34,19 +34,19 @@ cp cypress.env.example.json cypress.env.json
 
 ```bash
 # Abrir o Cypress Test Runner (modo interativo)
-npx cypress open
+npm run test:open
 
-# Executar todos os testes em modo headless
-npx cypress run
+# Executar todos os testes (API + E2E)
+npm test
 
 # Executar apenas testes de API
-npx cypress run --spec "cypress/e2e/api/**/*.cy.js"
+npm run test:api
 
-# Executar apenas testes E2E
-npx cypress run --spec "cypress/e2e/frontend/**/*.cy.js"
+# Executar apenas testes E2E (Frontend)
+npm run test:e2e
 ```
 
-## 📁 Estrutura do Projeto
+## Estrutura do Projeto
 
 ```
 cypress-serverest-qa-tests/
@@ -70,7 +70,7 @@ cypress-serverest-qa-tests/
 
 ## Cenários de Teste
 
-### API Tests (7 cenários)
+### API Tests (8 cenários)
 
 #### Usuários
 - Criar usuário com sucesso
@@ -80,13 +80,31 @@ cypress-serverest-qa-tests/
 #### Login
 - Login com credenciais válidas
 - Login com credenciais inválidas
+- Login com email não cadastrado
 
 #### Produtos
-- Criar produto (autenticado como admin)
-- Listar produtos
-- Deletar produto
+- Criar produto autenticado como admin
+- Listar produtos cadastrados
+- Deletar produto existente
+- Validar erro ao criar produto sem autenticação
 
-## 🎯 Estratégia de Testes
+### E2E Tests (3 cenários)
+
+#### Cadastro de Usuário
+- Realizar cadastro completo com sucesso
+- Validar erro ao cadastrar email já existente
+- Validar campos obrigatórios do formulário
+
+#### Gestão de Produtos *(em desenvolvimento)*
+- Criar produto via interface (setup via API)
+- Validar produto na listagem
+
+#### Carrinho de Compras *(em desenvolvimento)*
+- Adicionar produto ao carrinho
+- Remover produto do carrinho
+- Validar carrinho vazio
+
+## Estratégia de Testes
 
 Este projeto segue a **pirâmide de testes**, priorizando:
 
@@ -94,31 +112,31 @@ Este projeto segue a **pirâmide de testes**, priorizando:
 2. **Testes E2E** (topo) - Validam jornadas críticas do usuário
 
 Essa abordagem garante:
-- ⚡ Execução rápida
-- 🎯 Alta cobertura
-- 🛡️ Menor fragilidade
-- 💰 Melhor custo-benefício
+- Execução rápida
+- Alta cobertura
+- Menor fragilidade
+- Melhor custo-benefício
 
-## 📝 Boas Práticas Aplicadas
+## Boas Práticas Aplicadas
 
-- ✅ Page Object Pattern
-- ✅ Comandos customizados reutilizáveis
-- ✅ Separação de testes API e E2E
-- ✅ Uso de fixtures para dados de teste
-- ✅ Variáveis de ambiente para credenciais
-- ✅ Asserções claras e descritivas
-- ✅ Independência entre testes
+- Comandos customizados reutilizáveis
+- Separação clara entre testes API e E2E
+- Setup/teardown com hooks (before, after, beforeEach, afterEach)
+- Criação dinâmica de dados de teste
+- Variáveis de ambiente para configurações sensíveis
+- Asserções claras e descritivas
+- Independência entre testes (cada teste cria seus próprios dados)
+- Cleanup automático (remoção de dados após testes)
 
-## 🔒 Segurança
+## Segurança
 
-As credenciais de teste estão armazenadas em `cypress.env.json` que **não é commitado** no repositório.
-Use o arquivo `cypress.env.example.json` como template.
+Este projeto não requer credenciais pré-configuradas. Todos os testes criam seus próprios dados de forma dinâmica e isolada via API, garantindo:
 
-## 📚 Aplicação Testada
+- Independência entre execuções
+- Segurança (sem dados sensíveis no repositório)
+- Facilidade de uso (clone e rode).
+
+## Aplicação Testada
 
 - **Frontend**: https://front.serverest.dev/
 - **API**: https://serverest.dev/
-
-## 👤 Autor
-
-Desenvolvido como parte de desafio técnico para vaga de QA.
