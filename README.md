@@ -25,9 +25,6 @@ cd cypress-serverest-qa-tests
 # Instalar dependências
 npm install
 
-# Configurar variáveis de ambiente
-cp cypress.env.example.json cypress.env.json
-# Edite cypress.env.json com suas credenciais de teste
 ```
 
 ## Executando os testes
