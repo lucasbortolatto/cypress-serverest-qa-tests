@@ -2,18 +2,18 @@
 
 Projeto de automação de testes E2E e API para a aplicação ServeRest, desenvolvido com Cypress e JavaScript.
 
-## 🚀 Tecnologias
+## Tecnologias
 
 - [Cypress](https://www.cypress.io/) - Framework de testes E2E
 - [JavaScript](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript) - Linguagem de programação
 - [Faker.js](https://fakerjs.dev/) - Geração de dados fake para testes
 
-## 📋 Pré-requisitos
+## Pré-requisitos
 
 - Node.js (versão 14 ou superior)
 - npm ou yarn
 
-## 🔧 Instalação
+## Instalação
 
 ```bash
 # Clonar o repositório
@@ -30,7 +30,7 @@ cp cypress.env.example.json cypress.env.json
 # Edite cypress.env.json com suas credenciais de teste
 ```
 
-## ▶️ Executando os testes
+## Executando os testes
 
 ```bash
 # Abrir o Cypress Test Runner (modo interativo)
@@ -68,29 +68,23 @@ cypress-serverest-qa-tests/
 └── package.json
 ```
 
-## 🧪 Cenários de Teste
+## Cenários de Teste
 
 ### API Tests (7 cenários)
 
 #### Usuários
-- ✅ Criar usuário com sucesso
-- ✅ Validar erro ao criar usuário duplicado
-- ✅ Listar usuários cadastrados
+- Criar usuário com sucesso
+- Validar erro ao criar usuário duplicado
+- Listar usuários cadastrados
 
 #### Login
-- ✅ Login com credenciais válidas
-- ✅ Login com credenciais inválidas
+- Login com credenciais válidas
+- Login com credenciais inválidas
 
 #### Produtos
-- ✅ Criar produto (autenticado como admin)
-- ✅ Listar produtos
-- ✅ Deletar produto
-
-### E2E Tests (3 cenários)
-
-- ✅ Fluxo completo de cadastro de usuário
-- ✅ Fluxo de criação de produto (setup via API)
-- ✅ Fluxo de adicionar e remover itens do carrinho
+- Criar produto (autenticado como admin)
+- Listar produtos
+- Deletar produto
 
 ## 🎯 Estratégia de Testes
 
